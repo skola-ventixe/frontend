@@ -1,0 +1,11 @@
+.layout-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  min-height: 100vh;
+  padding: 0.75rem;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 223px 1fr;
+  }
+}

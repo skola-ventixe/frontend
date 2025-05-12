@@ -1,0 +1,5 @@
+.header {
+  background-color: var(--card);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+}

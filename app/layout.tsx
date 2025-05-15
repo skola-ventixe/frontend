@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import "../styles/layout.css";
-import Header from "@/components/header/header";
-import Nav from "@/components/nav/nav";
+import { AuthProvider } from "@/context/authContext";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -23,16 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${interSans.variable} antialiased`}>
-        <div className="layout-grid">
-          <Nav />
-          <div>
-            <Header />
-            <main className="flex-grow p-4">{children}</main>
-            <footer className="bg-gray-800 text-white p-4">
-              <p>&copy; 2023 My App</p>
-            </footer>
-          </div>
-        </div>
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

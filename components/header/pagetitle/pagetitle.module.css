@@ -1,0 +1,14 @@
+.h2 {
+  color: var(--secondary-100);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+.greeting {
+  color: var(--grey-70);
+  font-size: 0.75rem;
+  margin: 0;
+  padding: 0;
+}

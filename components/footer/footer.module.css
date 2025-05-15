@@ -1,0 +1,45 @@
+.footer {
+  grid-area: footer;
+  display: grid;
+  gap: 0.75rem;
+  padding-block: 0.75rem;
+  background-color: var(--background);
+  color: var(--grey-50);
+  text-align: center;
+  border-radius: var(--radius);
+}
+
+.footer p {
+  font-weight: 600;
+  color: var(--grey-70);
+  font-size: 0.75rem;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.75rem;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    grid-template-columns: auto 1fr auto;
+    background-color: var(--grey-20);
+    padding-inline: 1.5rem;
+    padding-block: 1rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .links {
+    justify-content: start;
+  }
+}

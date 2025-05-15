@@ -1,0 +1,44 @@
+.popoverContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.triggerWrapper {
+  cursor: pointer;
+}
+
+.menuContent {
+  position: absolute;
+  top: calc(100% + 4px);
+  background-color: white;
+  border-radius: var(--radius);
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.05);
+  min-width: 180px;
+  z-index: 100;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid var(--grey-30);
+}
+
+.right {
+  right: 0;
+}
+
+.left {
+  left: 0;
+}
+
+/* Optional animation */
+.menuContent {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

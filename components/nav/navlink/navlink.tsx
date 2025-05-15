@@ -1,8 +1,21 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import styles from "./navlink.module.css";
 
-function NavLink({ children }: { children: React.ReactNode }) {
+function NavLink({
+  children,
+  route,
+}: {
+  children: React.ReactNode;
+  route: string;
+}) {
+  const pathname = usePathname();
+
   return (
-    <li className={styles.navLink}>
+    <li
+      className={`${styles.navLink} ${pathname === route ? styles.active : ""}`}
+    >
       <div className={styles.selectedTag}></div>
       {children}
     </li>

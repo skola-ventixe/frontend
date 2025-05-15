@@ -1,5 +1,49 @@
 .header {
+  display: none;
+  grid-area: header;
   background-color: var(--card);
   padding: 1rem 1.5rem;
   border-radius: var(--radius);
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-rows: 1fr;
+    grid-template-areas: "title search actions user";
+    align-items: center;
+    gap: 0.75rem;
+  }
+}
+
+.actions {
+  grid-area: actions;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 0.75rem;
+}
+
+.user {
+  grid-area: user;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.userName {
+  display: none;
+  flex-direction: column;
+
+  @media (min-width: 1440px) {
+    display: flex;
+  }
+}
+
+.name {
+  font-weight: 600;
+  color: var(--secondary-110);
+}
+.role {
+  font-size: 0.7rem;
+  color: var(--grey-70);
 }

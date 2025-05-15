@@ -1,0 +1,75 @@
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 40rem;
+  margin: 1rem;
+  background-color: var(--grey-20);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 3px 3px 4px 2px var(--grey-30);
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  height: 10rem;
+  background-image: "/Dancefloor.jpg";
+  text-align: center;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  h1 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: var(--grey-10);
+  }
+}
+.logo {
+  display: inline-flex;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  border-radius: 200px;
+  background-color: hsl(from var(--cool-grey-20) h s l / 0.5);
+}
+
+.logoTitle {
+  font-size: 2rem;
+  color: var(--secondary-110);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  a {
+    color: var(--primary-110);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}

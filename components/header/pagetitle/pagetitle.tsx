@@ -1,20 +1,25 @@
-'use client'
-
+"use client";
+import Breadcrumb from "@/components/utility/breadcrumb/breadcrumb";
+import { formatTitle } from "@/components/utility/pagetitle";
+import styles from "./pagetitle.module.css";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/context/authContext";
 
 function PageTitle() {
   const pathname = usePathname();
-
-  const formatTitle = () => {
-    if(pathname === "/") {
-      return "Dashboard";
-    }
-
-    return pathname.slice(1).split("/").map(segment => segment.charAt(0).toUpperCase() + segment.slice(1)).join(" ");
-  }
+  const { user } = useAuth();
 
   return (
-    <h2>{formatTitle()}</h2>
-  )
+    <div className={styles.pagetitle}>
+      <Breadcrumb />
+      <h2 className={styles.h2}>{formatTitle()}</h2>
+      {pathname === "/" ? (
+        <p className={styles.greeting}>
+          {" "}
+          Hello {user?.fullname.split(" ")[0]}, welcome back!
+        </p>
+      ) : null}
+    </div>
+  );
 }
-export default PageTitle
+export default PageTitle;

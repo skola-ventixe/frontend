@@ -1,49 +1,162 @@
 .nav {
+  grid-area: header;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
-  gap: 1rem;
-  padding-bottom: 1rem;
-  justify-content: space-between;
   background-color: #eeefff;
   border-radius: var(--radius);
+  gap: 1rem;
+  justify-content: space-between;
 
-  @media screen and (min-width: 768px) {
+  /* Default styling for mobile (collapsed) */
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto;
+  grid-template-areas: "logo hamburger";
+
+  /* Expanded mobile navigation */
+  &.navActive {
+    padding-bottom: 1rem;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "logo hamburger"
+      "links links"
+      "logout logout";
+  }
+
+  @media (min-width: 768px) {
+    grid-area: nav;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "logo" "links" "logout";
+    padding-bottom: 1rem;
+    justify-content: center;
+  }
+
+  @media (min-width: 1440px) {
     grid-template-columns: 223px;
   }
 }
 
-.navWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @media screen and (min-width: 768px) {
-    align-items: start;
-  }
-}
-
 .logo {
+  grid-area: logo;
   display: flex;
   gap: 0.625rem;
-  padding: 2rem 1.5rem;
+  padding: 1rem;
   color: var(--secondary-110);
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1440px) {
     padding: 1.5rem;
   }
 }
 
+.bars {
+  color: var(--secondary-100);
+  grid-area: hamburger;
+  place-self: center;
+  margin: 0.625rem;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
 .navLinks {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  grid-area: links;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (min-width: 1440px) {
+    width: 100%;
+    align-items: start;
+  }
+}
+
+.navLogo {
+  height: 80px;
+  width: 80px;
+
+  @media (min-width: 768px) {
+    height: unset;
+    width: unset;
+  }
 }
 
 .navLinkText {
-  display: none;
+  display: block;
 
   @media screen and (min-width: 768px) {
+    display: none;
+  }
+  @media screen and (min-width: 1440px) {
     display: block;
+  }
+}
+
+.btnSignout {
+  grid-area: logout;
+  background-color: var(--cool-grey-20);
+  color: var(--secondary-100);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  margin-inline: 0.625rem;
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    border-radius: 50%;
+    margin-inline: 0.625rem;
+    aspect-ratio: 1;
+    height: 2.5rem;
+    padding: unset;
+    aspect-ratio: 1;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 1440px) {
+    padding-block: 0.2rem;
+    aspect-ratio: unset;
+    border-radius: var(--radius-sm);
+    margin-inline: 0.625rem;
+    padding: 0.5rem;
+  }
+}
+
+/* Mobile Navigation functionality */
+
+@media (max-width: 767px) {
+  .navLinks,
+  .btnSignout {
+    display: none;
+  }
+
+  /* Show when nav is active */
+  .navActive .navLinks,
+  .navActive .btnSignout {
+    display: grid; /* For navLinks */
+  }
+
+  .navActive .btnSignout {
+    display: flex; /* For button */
+  }
+
+  /* Optional: Add animation */
+  .navLinks,
+  .btnSignout {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

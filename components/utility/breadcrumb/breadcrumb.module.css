@@ -1,0 +1,35 @@
+.breadcrumbList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.breadcrumbItem {
+  display: flex;
+  align-items: center;
+  color: var(--secondary-80);
+  font-size: 0.7rem;
+}
+
+.breadcrumbLink {
+  color: var(--primary-100);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumbLink:hover {
+  text-decoration: underline;
+}
+
+.currentPage {
+  color: var(--secondary-100);
+  font-weight: 600;
+}
+
+.separator {
+  margin: 0 0.5rem;
+  color: var(--grey-60);
+}

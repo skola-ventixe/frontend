@@ -1,11 +1,29 @@
+main {
+}
+
 .layout-grid {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: "header" "main" "footer";
   gap: 0.75rem;
   min-height: 100vh;
   padding: 0.75rem;
 
-  @media screen and (min-width: 768px) {
+  @media (min-width: 768px) {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "nav header" "nav main" "nav footer";
+  }
+
+  @media (min-width: 1440px) {
     grid-template-columns: 223px 1fr;
   }
+}
+
+.centerlayout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }

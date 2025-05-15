@@ -200,18 +200,16 @@
     @apply inline-flex gap-4 items-center justify-center transition-colors;
   }
 
-  .btnSignout {
-    background-color: var(--cool-grey-20);
-    color: var(--secondary-100);
-    border-radius: 50%;
-    margin-inline: 0.625rem;
-    aspect-ratio: 1;
-    height: 2.5rem;
-
-    @media screen and (min-width: 768px) {
-      padding-block: 0.2rem;
-      aspect-ratio: unset;
-      border-radius: var(--radius-sm);
-    }
+  /* Form Components */
+  input,
+  textarea {
+    @apply border rounded-xl w-100 px-4 py-2;
+    background-color: white;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .input:focus {
+    @apply outline-none ring-2 ring-ring/50;
   }
 }

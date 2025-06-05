@@ -4,6 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import AuthService, {
   LoginCredentials,
   RegisterCredentials,
+  VerifyCredentials,
 } from "../services/authService";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -19,6 +20,8 @@ interface AuthContextType {
   login: (credentials: LoginCredentials) => Promise<void>;
   register: (credentials: RegisterCredentials) => Promise<void>;
   logout: () => void;
+  checkExists: (email: string) => Promise<boolean>;
+  verify: (credentials: VerifyCredentials) => Promise<boolean>;
   loading: boolean;
   error: string | null;
 }
@@ -104,6 +107,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         JSON.stringify({
           id: response.userId,
           email: credentials.email,
+          fullname: response.fullName,
         })
       );
 
@@ -119,8 +123,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
       router.push("/");
     } catch (err: any) {
+      console.log(err);
       setError(
-        err.response?.data?.message || "An error occurred during registration"
+        err.response?.data?.title || "An error occurred during registration"
       );
     } finally {
       setLoading(false);
@@ -134,9 +139,48 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     router.push("/signin");
   };
 
+  const checkExists = async (email: string): Promise<boolean> => {
+    try {
+      setError(null);
+      setLoading(true);
+      const response = await AuthService.checkExists(email);
+      return response;
+    } catch (err: any) {
+      setError(err.response?.data || "An error occurred while checking email");
+      console.log(err);
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const verify = async (credentials: VerifyCredentials): Promise<boolean> => {
+    try {
+      setError(null);
+      setLoading(true);
+      const response = await AuthService.verify(credentials);
+      return response;
+    } catch (err: any) {
+      setError(err.response?.data || "An error occurred while verifying code");
+      console.log(err);
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ user, login, register, logout, loading, error }}
+      value={{
+        user,
+        login,
+        register,
+        logout,
+        checkExists,
+        verify,
+        loading,
+        error,
+      }}
     >
       {children}
     </AuthContext.Provider>

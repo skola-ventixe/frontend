@@ -1,10 +1,16 @@
 import axios from "axios";
 
-const API_URL = "https://localhost:7078/api/auth";
+const API_URL =
+  "https://ventixeaccountservice-e8cba0ejasd7bzdh.swedencentral-01.azurewebsites.net/api/auth";
 
 export interface LoginCredentials {
   email: string;
   password: string;
+}
+
+export interface VerifyCredentials {
+  email: string;
+  code: string;
 }
 
 export interface RegisterCredentials {
@@ -23,6 +29,16 @@ export interface AuthResponse {
 }
 
 const AuthService = {
+  async checkExists(email: string): Promise<boolean> {
+    const response = await axios.get(`${API_URL}/exists/${email}`);
+    return response.data;
+  },
+
+  async verify(credentials: VerifyCredentials): Promise<boolean> {
+    const response = await axios.post(`${API_URL}/verify`, credentials);
+    return response.data;
+  },
+
   async login(credentials: LoginCredentials): Promise<AuthResponse> {
     const response = await axios.post(`${API_URL}/signin`, credentials);
     return response.data;

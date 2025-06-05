@@ -114,6 +114,9 @@
   --cool-grey-30: #dddeed;
   --cool-grey-20: #e4e5f5;
   --cool-grey-10: #eeefff;
+
+  --error: #ff4f4675;
+  --error-dark: #c14f49;
 }
 
 .dark {
@@ -202,8 +205,9 @@
 
   /* Form Components */
   input,
-  textarea {
-    @apply border rounded-xl w-100 px-4 py-2;
+  textarea,
+  select {
+    @apply border rounded-xl w-100 px-4 border-r-16 border-transparent border-solid py-2;
     background-color: white;
     font-size: 1rem;
     line-height: 1.5;

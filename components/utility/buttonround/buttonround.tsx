@@ -1,4 +1,4 @@
-import styles from "./buttonround.module.css";
+import buttonroundstyles from "./buttonround.module.css";
 type ColorVariant = "primary" | "secondary" | "outline" | "ghost";
 type SizeVariant = "sm" | "md" | "lg" | "xl";
 
@@ -23,7 +23,7 @@ function ButtonRound({
     <button
       type={type}
       onClick={onClick}
-      className={`${styles.button} ${styles[variant]} ${styles[size]} ${className}`}
+      className={`${buttonroundstyles.button} ${buttonroundstyles[variant]} ${buttonroundstyles[size]} ${className}`}
     >
       {children}
     </button>

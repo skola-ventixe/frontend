@@ -1,0 +1,45 @@
+.progressBar {
+  width: 100%;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.sm {
+  height: 6px;
+}
+
+.md {
+  height: 8px;
+}
+
+.lg {
+  height: 10px;
+}
+
+.primary,
+.secondary,
+.grey,
+.cool-grey {
+  background-color: var(--grey-20);
+}
+
+.filled {
+  border-radius: 2rem;
+  height: 100%;
+}
+
+.primary > .filled {
+  background-color: var(--primary-100);
+}
+
+.secondary > .filled {
+  background-color: var(--secondary-100);
+}
+
+.grey > .filled {
+  background-color: var(--grey-50);
+}
+
+.cool-grey > .filled {
+  background-color: var(--cool-grey-40);
+}

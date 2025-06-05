@@ -7,7 +7,7 @@ function MainLayout({ children }: { children: React.ReactNode }) {
     <div className="layout-grid">
       <Nav />
       <Header />
-      <main className="flex-grow p-4">{children}</main>
+      {children}
       <Footer />
     </div>
   );

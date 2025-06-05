@@ -9,6 +9,7 @@ import {
   Menu,
   ReceiptText,
   SquareCheck,
+  Ticket,
 } from "lucide-react";
 import NavLink from "./navlink/navlink";
 import Link from "next/link";
@@ -88,6 +89,12 @@ function Nav() {
           <NavLink route="/finacials">
             <CircleDollarSign className={styles.navLogo} />
             <span className={styles.navLinkText}>Financials</span>
+          </NavLink>
+        </Link>
+        <Link href="/events">
+          <NavLink route="/events">
+            <Ticket className={styles.navLogo} />
+            <span className={styles.navLinkText}>Events</span>
           </NavLink>
         </Link>
       </ul>

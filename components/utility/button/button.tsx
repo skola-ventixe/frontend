@@ -1,32 +1,35 @@
-import styles from "./button.module.css";
+import buttonstyles from "./button.module.css";
 type ColorVariant = "primary" | "secondary" | "outline" | "ghost";
 type SizeVariant = "sm" | "md" | "lg" | "xl";
 
-interface ButtonRoundProps {
+interface ButtonProps {
   type: "button" | "submit";
   variant: ColorVariant;
   size: SizeVariant;
+  disabled?: boolean;
   className?: string;
   onClick?: () => void;
   children: React.ReactNode;
 }
 
-function ButtonRound({
+function Button({
   children,
   type = "button",
   variant = "primary",
   size = "md",
+  disabled = false,
   className = "",
   onClick,
-}: ButtonRoundProps) {
+}: ButtonProps) {
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`${styles.button} ${styles[variant]} ${styles[size]} ${className}`}
+      className={`${buttonstyles.button} ${buttonstyles[variant]} ${buttonstyles[size]} ${className}`}
+      disabled={disabled}
     >
       {children}
     </button>
   );
 }
-export default ButtonRound;
+export default Button;

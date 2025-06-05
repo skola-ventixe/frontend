@@ -6,11 +6,13 @@ import styles from "./popovermenu.module.css";
 interface PopoverMenuProps {
   trigger: ReactNode;
   children: ReactNode;
+  className?: string;
   align?: "left" | "right";
 }
 
 export default function PopoverMenu({
   trigger,
+  className,
   children,
   align = "right",
 }: PopoverMenuProps) {
@@ -47,7 +49,7 @@ export default function PopoverMenu({
       </div>
 
       {isOpen && (
-        <div className={`${styles.menuContent} ${styles[align]}`}>
+        <div className={`${styles.menuContent} ${styles[align]} ${className}`}>
           {children}
         </div>
       )}

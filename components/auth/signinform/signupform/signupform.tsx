@@ -88,7 +88,7 @@ function SignUpForm() {
         <form onSubmit={handleVerificationSubmit} className={styles.form}>
           <h2 className={styles.stepTitle}>Step 2: Verify your email</h2>
           <p className={styles.instructions}>
-            We've sent a 6-digit code to <strong>{email}</strong>
+            We have sent a 6-digit code to <strong>{email}</strong>
           </p>
           <div className={styles.inputGroup}>
             <label htmlFor="verificationCode">Verification Code:</label>

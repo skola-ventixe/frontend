@@ -1,14 +1,14 @@
 "use client";
 import { usePathname } from "next/navigation";
 
-export const formatTitle = () => {
+export const usePageTitle = () => {
   const pathname = usePathname();
 
   if (pathname === "/") {
     return "Dashboard";
   }
 
-  let segments = pathname
+  const segments = pathname
     .slice(1)
     .split("/")
     .filter((segment) => segment);

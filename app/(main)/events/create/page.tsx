@@ -4,13 +4,19 @@ import styles from "./create.module.css";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import Button from "@/components/utility/button/button";
 import { Plus, Minus } from "lucide-react";
-import {
-  EventProps,
-  Packages,
-  Benefit,
-  AddEvent,
-} from "@/services/eventService";
+import { EventProps, Packages, AddEvent } from "@/services/eventService";
 import { useRouter } from "next/navigation";
+
+type PackageFieldValue = {
+  name: string;
+  price: number;
+  description: string;
+  seated: boolean | string;
+  placement: string;
+  eventId: string;
+  id: string;
+  benefits: Array<{ id?: number; description: string }>;
+};
 
 function CreateNewEvent() {
   const router = useRouter();
@@ -61,7 +67,7 @@ function CreateNewEvent() {
   const handlePackageChange = (
     index: number,
     field: keyof Packages,
-    value: any
+    value: PackageFieldValue[keyof PackageFieldValue]
   ) => {
     setEventData((prev) => {
       const updatedPackages = [...prev.packages];

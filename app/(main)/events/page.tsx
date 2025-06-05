@@ -16,21 +16,40 @@ function Events() {
   const [events, setEvents] = useState<EventProps[]>([]);
   const [filter, setFilter] = useState<string>(() => {
     if (typeof window !== "undefined") {
-      return (localStorage.getItem("eventFilter") as any) || "all";
+      const storedFilter = localStorage.getItem("eventFilter");
+      if (
+        storedFilter &&
+        ["all", "active", "draft", "past"].includes(storedFilter)
+      ) {
+        return storedFilter;
+      }
+      return "all";
     }
+    return "all";
   });
   const [filteredEvents, setFilteredEvents] = useState<EventProps[]>([]);
   const [sortField, setSortField] = useState<
     "venue" | "eventName" | "startDate"
   >(() => {
     if (typeof window !== "undefined") {
-      return (localStorage.getItem("eventSortField") as any) || "venue";
+      const storedValue = localStorage.getItem("eventSortField");
+      if (
+        storedValue === "venue" ||
+        storedValue === "eventName" ||
+        storedValue === "startDate"
+      ) {
+        return storedValue;
+      }
     }
     return "venue";
   });
+
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">(() => {
     if (typeof window !== "undefined") {
-      return (localStorage.getItem("eventSortDirection") as any) || "asc";
+      const storedDirection = localStorage.getItem("eventSortDirection");
+      if (storedDirection === "asc" || storedDirection === "desc") {
+        return storedDirection;
+      }
     }
     return "asc";
   });
@@ -197,7 +216,10 @@ function Events() {
                 <select
                   id="sortField"
                   value={sortField}
-                  onChange={(e) => setSortField(e.target.value as any)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    setSortField(value as "venue" | "eventName" | "startDate");
+                  }}
                   className={styles.select}
                 >
                   <option value="venue">Venue</option>

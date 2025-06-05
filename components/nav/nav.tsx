@@ -22,12 +22,6 @@ function Nav() {
   const pathname = usePathname();
   const { logout } = useAuth();
 
-  const getPageTitle = () => {
-    if (pathname === "/") return "Dashboard";
-
-    return pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2);
-  };
-
   const handleNavToggle = () => {
     setShowNav((prev) => !prev);
   };
@@ -35,6 +29,12 @@ function Nav() {
   const [displayName, setDisplayName] = useState("Ventixe");
 
   useEffect(() => {
+    const getPageTitle = () => {
+      if (pathname === "/") return "Dashboard";
+
+      return pathname.slice(1).charAt(0).toUpperCase() + pathname.slice(2);
+    };
+
     const handleResize = () => {
       if (window.innerWidth < 768) {
         setDisplayName(getPageTitle());
@@ -43,15 +43,12 @@ function Nav() {
       }
     };
 
-    // Initial call
     handleResize();
 
-    // Add event listener
     window.addEventListener("resize", handleResize);
 
-    // Clean up event listener
     return () => window.removeEventListener("resize", handleResize);
-  }, [pathname]); // Re-run when pathname changes too
+  }, [pathname]);
 
   return (
     <nav className={`${styles.nav} ${showNav ? styles.navActive : ""}`}>
